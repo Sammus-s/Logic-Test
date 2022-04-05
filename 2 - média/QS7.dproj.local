@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/04/01 14:03:07.000.472,=C:\Users\PC\Desktop\DelphiTeste\2 - média\Unit1.pas</Transaction>
+    <Transaction>2022/04/01 14:04:14.000.811,C:\Users\PC\Desktop\DelphiTeste\2 - média\FrmMain.dfm=C:\Users\PC\Desktop\DelphiTeste\2 - média\Unit1.dfm</Transaction>
+    <Transaction>2022/04/01 14:04:14.000.811,C:\Users\PC\Desktop\DelphiTeste\2 - média\FrmMain.pas=C:\Users\PC\Desktop\DelphiTeste\2 - média\Unit1.pas</Transaction>
+    <Transaction>2022/04/02 17:23:18.000.289,=C:\Users\PC\Desktop\DelphiTeste\2 - média\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,61 @@
+unit FrmMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, uMaquina, uTroco, Generics.Collections;
+
+type
+  TForm1 = class(TForm)
+    mmTroco: TMemo;
+    Label1: TLabel;
+    BtnCalcular: TButton;
+    edtValor: TEdit;
+    Label2: TLabel;
+    procedure BtnCalcularClick(Sender: TObject);
+    procedure edtValorKeyPress(Sender: TObject; var Key: Char);
+  private
+    ListaNotas : TList;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.BtnCalcularClick(Sender: TObject);
+  var
+    Maquina : TMaquina;
+    Troco : TTroco;
+    I : integer;
+
+begin
+  Maquina := TMaquina.Create;
+  ListaNotas := Maquina.MontarTroco(StrToFloat(edtValor.Text));
+
+  mmTroco.Lines.Clear;
+  for I := 0 to ListaNotas.Count - 1 do
+  begin
+    Troco := ListaNotas[I];
+    if Troco.ehMoeda then
+      mmTroco.Lines.Add(IntToStr(Troco.Quantidade) + ' Notas de ' + FloatToStr(Troco.ValorCedula(Troco.Tipo)))
+    else
+      mmTroco.Lines.Add(IntToStr(Troco.Quantidade) + ' Moedas de ' + FloatToStr(Troco.ValorCedula(Troco.Tipo)));
+  end;
+
+end;
+
+procedure TForm1.edtValorKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not (Key in [#8, '0'..'9', FormatSettings.DecimalSeparator]) then begin
+    ShowMessage('Invalid key: ' + Key);
+    Key := #0;
+  end
+end;
+
+end.

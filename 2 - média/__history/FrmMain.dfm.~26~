@@ -1,0 +1,55 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 266
+  ClientWidth = 232
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 25
+    Top = 8
+    Width = 26
+    Height = 15
+    Caption = 'Valor'
+  end
+  object Label2: TLabel
+    Left = 25
+    Top = 107
+    Width = 29
+    Height = 15
+    Caption = 'Troco'
+  end
+  object mmTroco: TMemo
+    Left = 25
+    Top = 128
+    Width = 185
+    Height = 130
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object BtnCalcular: TButton
+    Left = 81
+    Top = 72
+    Width = 75
+    Height = 25
+    Caption = 'Calcular'
+    TabOrder = 0
+    OnClick = BtnCalcularClick
+  end
+  object edtValor: TMaskEdit
+    Left = 25
+    Top = 29
+    Width = 176
+    Height = 23
+    EditMask = '!0.00;'
+    MaxLength = 4
+    TabOrder = 2
+    Text = ' .  '
+  end
+end

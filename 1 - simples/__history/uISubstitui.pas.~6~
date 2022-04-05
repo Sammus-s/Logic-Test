@@ -1,0 +1,26 @@
+unit uISubstitui;
+
+interface
+
+type
+
+  ISubstitui = interface
+    function Substituir(Str, Velho, Novo: String): String;
+  end;
+
+  TSubstitui = class(TInterfacedObject, ISubstitui)
+    function Substituir(Str, Velho, Novo: String): String;
+  end;
+
+
+implementation
+
+{ TSubstitui }
+
+  function TSubstitui.Substituir(Str, Velho, Novo: String): String;
+  begin
+
+  end;
+
+end.
+

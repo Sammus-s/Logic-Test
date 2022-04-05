@@ -1,0 +1,133 @@
+unit uNetwork;
+
+interface
+  uses
+    System.SysUtils;
+
+  type
+  TNetwork = class
+  private
+    FSize : integer;
+  protected
+    function getNumber(num,pos: integer): integer;
+    function searchArray(ary : array of integer; num: integer):Boolean;
+    var
+      Connections : array of integer;
+  public
+    constructor Create(ASize: Integer);
+    procedure Connect(Element1,Element2 : integer);
+    function Query(Element1,Element2 : integer): Boolean;
+  published
+    property Size : integer read FSize write FSize;
+  end;
+implementation
+
+{ TNetwork }
+
+procedure TNetwork.Connect(Element1, Element2: integer);
+var
+  I,LConnection,LRevConnection : integer;
+begin
+  try
+    LConnection := (Element1 * 10) + Element2;
+    LRevConnection := (Element2 * 10) + Element1;
+
+    for I := 0 to Length(Connections)-1 do
+      if (Connections[I] = LConnection) or (Connections[I] = LRevConnection) then
+        abort;
+
+    SetLength(Connections, Length(Connections)+1);
+    Connections[Length(Connections)-1]:= LConnection;
+  except
+    on e: exception do
+      raise Exception.Create('Connection already exists');
+  end;
+end;
+
+constructor TNetwork.Create(ASize: Integer);
+begin
+  try
+    if ASize > 0 then
+      FSize := ASize
+    else
+      abort;
+  except
+    on e: exception do
+    raise Exception.Create('Invalid Value');
+  end;
+end;
+
+function TNetwork.getNumber(num, pos: integer): integer;
+begin
+  Result := StrToInt(IntToStr(num)[pos]);
+end;
+
+function TNetwork.Query(Element1, Element2: integer): Boolean;
+var
+  I,Count, QueryCount,LConnection,LRevConnection: integer;
+  ConnectedNumbers : array of integer;
+  ConnectionSearch : Boolean;
+  
+begin
+  LConnection := (Element1 * 10) + Element2;
+  LRevConnection := (Element2 * 10) + Element1;
+  Count := 0;
+  QueryCount := 0;
+  ConnectionSearch := true;
+  SetLength(ConnectedNumbers, Size);
+
+  if (Length(Connections) = 0) then
+      EXIT;
+
+  while ConnectionSearch do
+  begin
+    for I := 0 to Length(Connections)-1 do
+    begin
+      if (Connections[I] = LConnection) or (Connections[I] = LRevConnection) then
+      begin
+        Result := True;
+        exit;
+      end
+      else if ((getNumber(LConnection,1) = getNumber(Connections[I],1))) and (not searchArray(ConnectedNumbers, getNumber(Connections[I],2))) then
+      begin
+        ConnectedNumbers[Count] := getNumber(Connections[I],2);
+        inc(Count);
+      end
+      else if (getNumber(LConnection,1) = getNumber(Connections[I],2)) and (not searchArray(ConnectedNumbers, getNumber(Connections[I],1))) then
+      begin
+        ConnectedNumbers[Count] := getNumber(Connections[I],1);
+        inc(Count);
+      end;
+
+      if (I = Length(Connections)-1) then
+      begin
+        if (count = QueryCount)  then
+          Exit;
+
+        LConnection := (ConnectedNumbers[QueryCount] * 10) + Element2;
+        LRevConnection := (Element2 * 10) + ConnectedNumbers[QueryCount];
+        inc(QueryCount);
+      end;
+    end;
+  end;
+
+  
+end;
+
+function TNetwork.searchArray(ary: array of integer; num: integer): Boolean;
+var
+  I: Integer;
+begin
+  Result := False;
+  
+  for I := 0 to Length(ary)-1 do
+  begin
+    if ary[I] = num then
+    begin
+      Result := True;
+      exit;
+    end;
+  end;
+end;
+
+end.

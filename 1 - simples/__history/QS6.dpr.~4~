@@ -1,0 +1,14 @@
+program QS6;
+
+uses
+  uMain in 'uMain.pas' {Form1},
+  uISubstitui in 'uISubstitui.pas',
+  uSubstitui in 'uSubstitui.pas';
+
+{$R *.RES}
+
+begin
+
+end;
+end.
+

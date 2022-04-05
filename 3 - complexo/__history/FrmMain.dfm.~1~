@@ -1,0 +1,60 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 435
+  ClientWidth = 510
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object rgElement1: TRadioGroup
+    Left = 32
+    Top = 24
+    Width = 185
+    Height = 105
+    Caption = 'Element 1'
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8')
+    TabOrder = 0
+  end
+  object rgElement2: TRadioGroup
+    Left = 296
+    Top = 24
+    Width = 185
+    Height = 105
+    Caption = 'Element 2'
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8')
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 176
+    Top = 168
+    Width = 161
+    Height = 49
+    Caption = 'Button1'
+    TabOrder = 2
+  end
+end

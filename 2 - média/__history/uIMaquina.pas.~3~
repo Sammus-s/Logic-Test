@@ -1,0 +1,17 @@
+unit uIMaquina;
+
+interface
+
+uses
+  Classes,uTroco;
+
+type
+
+  IMaquina = interface
+    function MontarTroco(Troco: Double): TList<uTroco.TCedula>;
+  end;
+
+implementation
+
+end.
+

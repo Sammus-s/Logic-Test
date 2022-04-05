@@ -1,0 +1,14 @@
+program QS7;
+
+uses
+
+  FrmMain in 'FrmMain.pas' {Form1},
+  uTroco in 'uTroco.pas',
+  uIMaquina in 'uIMaquina.pas',
+  uMaquina in 'uMaquina.pas' {$R *.RES};
+
+{$R *.RES}
+
+begin
+end.
+
